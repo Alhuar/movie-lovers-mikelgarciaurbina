@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Movie Lovers!</title>
+  </head>
+  <body>
+    <h1>Movie Lovers!</h1>
+    <p>----------------------------</p>
+    <h2><%= @question[1].gsub(/[#]/, @result.to_s) %></h2>
+    <% @movies.each_with_index do |movie, index| %>
+      <% if movie.year == @year %>
+      <img src="<%= movie.poster %>" height="200" onClick="alert('CORRECT! Good job!')">
+      <% else %>
+      <img src="<%= movie.poster %>" height="200" onClick="alert('INCORRECT! Good job!')">
+      <% end %>
+    <% end %>
+  </body>
+</html>
