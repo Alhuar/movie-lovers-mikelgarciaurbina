@@ -10,8 +10,9 @@ class MovieQuiz
   end
 
   def search_movies_in_imdb(movie)
+    @movies = []
     search = Imdb::Search.new(movie)
-    if search.movies.size > 2
+    if search.movies.size > 9
       get_nine_movies_with_poster(search.movies)
     else
       false

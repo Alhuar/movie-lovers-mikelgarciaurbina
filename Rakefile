@@ -2,7 +2,7 @@ require 'rubocop/rake_task'
 
 task :default => [:rubocop]
 RuboCop::RakeTask.new(:rubocop) do |task|
-  task.patterns = ['lib/**/*.rb', 'app.rb']
+  task.patterns = ['lib/**/*.rb', 'server.rb']
   # don't abort rake on failure
   task.fail_on_error = true
 end

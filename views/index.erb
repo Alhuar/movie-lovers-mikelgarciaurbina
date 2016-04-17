@@ -3,13 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Movie Lovers!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Movie Lovers!</h1>
-    <p>Search a word for the quiz:</p>
-    <form action="/search_word" method="POST">
-      <input type="text" placeholder="Insert word" name="word">
-      <button type="submit">Search</button>
-    </form>
+    <article>
+      <h1>Movie Lovers!</h1>
+      <p class="searchWord">Search a word for the quiz:</p>
+      <form action="/search_word" method="POST">
+        <input type="text" placeholder="Insert word" name="word">
+        <br>
+        <button type="submit">Search</button>
+      </form>
+    </article>
   </body>
 </html>

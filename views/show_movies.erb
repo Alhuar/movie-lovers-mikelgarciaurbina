@@ -3,17 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>Movie Lovers!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Movie Lovers!</h1>
-    <p>----------------------------</p>
-    <h2><%= @question[1].gsub(/[#]/, @result.to_s) %></h2>
-    <% @movies.each_with_index do |movie, index| %>
-      <% if movie.year == @year %>
-      <img src="<%= movie.poster %>" height="200" onClick="alert('CORRECT! Good job!')">
-      <% else %>
-      <img src="<%= movie.poster %>" height="200" onClick="alert('INCORRECT! Good job!')">
+    <div class="question">
+      <h1>Movie Lovers!</h1>
+      <p>----------------------------</p>
+      <h2><%= @question[1].gsub(/[#]/, @result.to_s) %></h2>
+    </div>
+    <div class="movies">
+      <% @movies.each_with_index do |movie, index| %>
+        <% if movie.send(@question[0]).to_s == @result.to_s %>
+        <img src="<%= movie.poster %>" height="200" onClick="posterClick(this)" data-win="true">
+        <% else %>
+        <img src="<%= movie.poster %>" height="200" onClick="posterClick(this)" data-win="false">
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <script>
+      function posterClick(poster) {
+        removeAllBorders()
+        if(poster.dataset.win == "true") {
+          poster.style.border = "3px solid green";
+        } else {
+          poster.style.border = "3px solid red";
+        }
+      }
+
+      function removeAllBorders() {
+        var images = document.getElementsByTagName("img")
+        for(var i = 0; i < images.length; i++) {
+          images[i].style.border = "3px solid white";
+        }
+      }
+    </script>
   </body>
 </html>
